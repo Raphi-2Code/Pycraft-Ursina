@@ -1,6 +1,7 @@
 from ursina import *; from ursina.prefabs.first_person_controller import *
 from perlin_noise import PerlinNoise
 from random import randint,randrange
+window.show_ursina_splash = True
 app=Ursina()
 player = FirstPersonController()
 Sky(texture='blue_sky')
