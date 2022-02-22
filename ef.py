@@ -5,7 +5,7 @@ window.show_ursina_splash = True
 app=Ursina()
 player = FirstPersonController()
 Sky(texture='blue_sky')
-creeper=Entity(model='cube',collider='box',texture='creeper',scale=(2,4,2),position=(5, 3, 2))
+creeper=Entity(model='cube',collider='box',texture='creeper',scale=(2,4,2),position=(5, 3, 2),rotation_y=45)
 creeper.add_script(SmoothFollow(player, offset=(5,1,5)))
 '''for x in range(25):
     for z in range(25):
