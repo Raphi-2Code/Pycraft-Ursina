@@ -14,7 +14,7 @@ def destroy_creeper():
         creeper.collider=None
         lives=20
         creeper.add_script(SmoothFollow(player,offset=[10,10000000,10]))
-        Text('Tasty creeper😉')
+        Text('Tasty creeper:)')
 creeper=Entity(model='cube',collider='box',texture='creeper',scale=(2,4,2),position=(3, 1, 3),rotation_y=45,on_click=destroy_creeper)
 creeper.add_script(SmoothFollow(player, offset=(1, 1, 1), speed=1))
 
