@@ -76,7 +76,8 @@ def update():
     if int(round(heartlives))==1:
         texti.text=dedent("<red>♥<default><orange>/<default>                     ")
     if int(round(heartlives))==0:
-        texti.text=dedent("<orange>/<default>♡♡♡♡♡♡♡♡♡♡")
+        texti.text=dedent("<orange>/<default>\n♡♡♡♡♡♡♡♡♡♡")
+        texti.background=True
     '''
     if int(round(heartlives))==10:
         Text("♥♥♥♥♥♥♥♥♥♥",x=.11)
