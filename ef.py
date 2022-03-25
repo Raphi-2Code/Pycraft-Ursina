@@ -115,5 +115,5 @@ def input(key):
     if key=='right mouse down':
             def xi():
                 destroy(e)
-            e=Entity(model='cube',texture='grass',color=color.white,collider='box',scale=(1,1,1),position=(round(mouse.world_point.x),round(mouse.world_point.y),round(mouse.world_point.z)),on_click=xi)
+            e=Entity(model='cube',texture='grass',color=color.white,collider='box',scale=(1,1,1),position=(round(mouse.world_point.x),round(1+floor(mouse.world_point.y)),round(mouse.world_point.z)),on_click=xi)
 app.run()
