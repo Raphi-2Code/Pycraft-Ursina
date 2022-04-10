@@ -1,4 +1,4 @@
-# __Minecraft using Ursina Engine!__
+# __Minecraft using ursina engine!__
 __infinite terrain, no classes, creepers, hearts!__
 
 
