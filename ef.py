@@ -1,6 +1,7 @@
 from ursina import *; from ursina.prefabs.first_person_controller import *
 from perlin_noise import PerlinNoise
 from random import randint,randrange
+from Trees import *
 window.show_ursina_splash = True
 app=Ursina()
 player = FirstPersonController()
@@ -18,6 +19,14 @@ def destroy_creeper():
 creeper=Entity(model='cube',collider='box',texture='creeper',scale=(2,4,2),position=(3, 1, 3),rotation_y=45,on_click=destroy_creeper)
 creeper.add_script(SmoothFollow(player, offset=(1, 1, 1), speed=1))
 
+life = Trees()
+def genTrees(_x, _z, plantTree=True):
+    y = 1
+    freq = 32
+    amp = 21
+    y += ((noise([_x/freq,_z/freq]))*amp)
+    if plantTree==True:
+        life.checkTree(_x,y,_z)
 
 '''for x in range(25):
     for z in range(25):
@@ -101,19 +110,23 @@ def update():
         Text("♥♡♡♡♡♡♡♡♡♡",x=.208)
     if int(round(heartlives))==0:
         Text("♡♡♡♡♡♡♡♡♡♡",x=.416)'''
-
+    genTrees(randrange(-100, 100), randrange(-100, 100))
 for i in range(shellWidth*shellWidth):
-    ent = Entity(model='cube', texture='grass', collider='box')
+    ent = Entity(model='cube', texture='blue' if i%12==0 else 'grass', collider='box')
     shells.append(ent)
+
 def genTerr():
     global amp, freq
     for i in range(len(shells)):
         x = shells[i].x = floor((i/shellWidth) + player.x - 0.5*shellWidth)
         z = shells[i].z = floor((i%shellWidth) + player.z - 0.5*shellWidth)
         y = shells[i].y = floor(noise([x/freq, z/freq])*amp)
+
 def input(key):
     if key=='right mouse down':
             def xi():
                 destroy(e)
-            e=Entity(model='cube',texture='grass',color=color.white,collider='box',scale=(1,1,1),position=(round(mouse.world_point.x),round(1+floor(mouse.world_point.y)),round(mouse.world_point.z)),on_click=xi)
+            e=Entity(model='cube',texture='grass',color=color.white,collider='box',scale=(1,1,1),position=(round(mouse.world_point.x),1+floor(mouse.world_point.y),round(mouse.world_point.z)),on_click=xi)
+            if e.y>0:
+                e.texture="snow"
 app.run()
