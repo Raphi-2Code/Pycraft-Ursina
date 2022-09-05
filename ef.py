@@ -123,7 +123,7 @@ def genTerr():
         y = shells[i].y = floor(noise([x/freq, z/freq])*amp)
 
 def input(key):
-    if key=='right mouse down':
+    if key=='right mouse down' and mouse.world_point:
             def xi():
                 destroy(e)
             e=Entity(model='cube',texture='grass',color=color.white,collider='box',scale=(1,1,1),position=(round(mouse.world_point.x),1+floor(mouse.world_point.y),round(mouse.world_point.z)),on_click=xi)
